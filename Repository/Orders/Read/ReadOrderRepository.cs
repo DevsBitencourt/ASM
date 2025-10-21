@@ -24,6 +24,7 @@ namespace Repository.Orders.Read
                 var response = await connection.QueryAsync<ReadOrderModel, ReadOrderItemModel, ReadOrderModel>(ReadOrderQuery.FindAll(),
                     (order, orderItem) =>
                     {
+
                         if (!orderDictionary.TryGetValue(order.Id, out ReadOrderModel orderEntry))
                         {
                             orderEntry = order;
@@ -31,7 +32,10 @@ namespace Repository.Orders.Read
                             orderDictionary.Add(orderEntry.Id, orderEntry);
                         }
 
-                        orderEntry?.Items?.Add(orderItem);
+                        if (orderItem.Sequence > 0)
+                        {
+                            orderEntry?.Items?.Add(orderItem);
+                        }
 
                         return orderEntry;
 

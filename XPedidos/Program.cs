@@ -1,5 +1,6 @@
 using Scalar.AspNetCore;
 using XPedidos.Infrastructure.DI;
+using XPedidos.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,9 @@ if (app.Environment.IsDevelopment())
 
     app.MapScalarApiReference("/api-docs");
 }
+
+//app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<DiscordMiddleware>();
 
 app.UseHttpsRedirection();
 

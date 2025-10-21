@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Repository.Contract.Orders;
 using Repository.Contract.OrdersItems;
+using Repository.Contract.Products;
 using Repository.Models.OrdersItems;
 using Repository.SQLServer;
 
@@ -12,10 +13,12 @@ namespace Repository.OrdersItems.Create
     public class CreateOrderItemRepository : ConnectionSql, ICreateOrderItemRepository
     {
         private readonly IReadOrderRepository repository;
+        private readonly IUpdateProductRepository updateProduct;
 
-        public CreateOrderItemRepository(IConfiguration configuration, IReadOrderRepository repository) : base(configuration)
+        public CreateOrderItemRepository(IConfiguration configuration, IReadOrderRepository repository, IUpdateProductRepository updateProduct) : base(configuration)
         {
             this.repository = repository;
+            this.updateProduct = updateProduct;
         }
 
         public async Task<OrderItemModel?> CreateAsync(OrderItemModel order)
@@ -33,7 +36,9 @@ namespace Repository.OrdersItems.Create
             try
             {
                 await using var connection = new SqlConnection(ConnectioString);
-                var response = await connection.ExecuteAsync(CreateOrderItemQuery.Command(), new { id = order.IdOrder, idProduct = order.idProduct, sequence, amount = order.Amount });
+                var response = await connection.ExecuteAsync(CreateOrderItemQuery.Command(), new { id = order.IdOrder, order.idProduct, sequence, amount = order.Amount });
+
+                await StockMovement(order.idProduct, order.Amount);
 
                 return order;
             }
@@ -53,6 +58,17 @@ namespace Repository.OrdersItems.Create
             {
                 return null;
             }
+        }
+
+        private async Task StockMovement(int productId, int amount)
+        {
+            var product = new Models.Products.ProductModel()
+            {
+                Id = productId,
+                Amount = amount * -1
+            };
+
+            await updateProduct.StockMovementAsync(product);
         }
 
         private static ForeignKeyException HandleForeignKeyError(SqlException ex)

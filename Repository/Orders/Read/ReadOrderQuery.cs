@@ -11,7 +11,7 @@
 	                        o.STATUS,
 	                        c.NAME,
 	                        c.DOCUMENT,
-                            i.IDFK_ORDERS,
+                            COALESCE(i.IDFK_ORDERS,0) as IDFK_ORDERS,
 	                        i.SEQUENCE,
 							i.AMOUNT,
 							i.IDFK_PRODUCTS as ProductCode,
@@ -20,9 +20,9 @@
                        FROM ORDERS o WITH(NOLOCK)
                       INNER JOIN CLIENTS c WITH(NOLOCK)
                          ON c.ID_CLIENTS = o.IDFK_CLIENTS
-					  INNER JOIN ORDERS_ITEMS i WITH(NOLOCK)
+					   LEFT JOIN ORDERS_ITEMS i WITH(NOLOCK)
 					     ON i.IDFK_ORDERS = o.ID_ORDERS
-				      INNER JOIN PRODUCTS p WITH(NOLOCK)
+				       LEFT JOIN PRODUCTS p WITH(NOLOCK)
 				 	     ON p.ID_PRODUCTS = i.IDFK_PRODUCTS";
         }
 

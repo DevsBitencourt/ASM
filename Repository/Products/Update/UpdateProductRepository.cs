@@ -26,5 +26,19 @@ namespace Repository.Products.Update
                 return null;
             }
         }
+
+        public async Task<ProductModel?> StockMovementAsync(ProductModel model)
+        {
+            try
+            {
+                await using var connection = new SqlConnection(ConnectioString);
+                var response = await connection.ExecuteAsync(UpdateProductQuery.StockMovementCommand(), new { id = model.Id, amount = model.Amount });
+                return model;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

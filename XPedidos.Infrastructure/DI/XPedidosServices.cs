@@ -4,9 +4,11 @@ using Business.Clients.Read;
 using Business.Clients.Update;
 using Business.Contract.Clients;
 using Business.Contract.Clients.Update;
+using Business.Contract.Discord;
 using Business.Contract.Orders;
 using Business.Contract.OrdersItems;
 using Business.Contract.Products;
+using Business.Discord;
 using Business.Orders.Create;
 using Business.Orders.Delete;
 using Business.Orders.Read;
@@ -16,6 +18,7 @@ using Business.Products.Create;
 using Business.Products.Delete;
 using Business.Products.Read;
 using Business.Products.Update;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace XPedidos.Infrastructure.DI
@@ -30,6 +33,14 @@ namespace XPedidos.Infrastructure.DI
             OrdersConfigure(services);
             OrdersItemsConfigure(services);
             ProductsConfigure(services);
+
+            services.AddSingleton<IDiscordServiceBusiness>(provider =>
+            {
+                var app = provider.GetService<IConfiguration>();
+
+                return new DiscordServiceBusiness(app?.GetSection("DiscordWebHook").Value ?? throw new ArgumentNullException("Webhook api não informado"));
+
+            });
         }
 
         public static void ClientsConfigure(IServiceCollection services)
