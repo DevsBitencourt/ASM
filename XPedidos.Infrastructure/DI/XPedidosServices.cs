@@ -36,10 +36,23 @@ namespace XPedidos.Infrastructure.DI
 
             services.AddSingleton<IDiscordServiceBusiness>(provider =>
             {
-                var app = provider.GetService<IConfiguration>();
+                try
+                {
+                    var app = provider.GetService<IConfiguration>();
 
-                return new DiscordServiceBusiness(app?.GetSection("DiscordWebHook").Value ?? throw new ArgumentNullException("Webhook api não informado"));
-
+                    if (app is not null)
+                    {
+                        if (app.GetSection("DiscordWebHook").Value is not null and string _webHook)
+                        {
+                            return new DiscordServiceBusiness(_webHook);
+                        }
+                    }
+                    throw new Exception();
+                }
+                catch (Exception)
+                {
+                    return new DiscordServiceBusiness(null);
+                }
             });
         }
 
