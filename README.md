@@ -46,16 +46,29 @@ Este projeto traz como foco o desafio final da Pós Gradução em Arquitetura de
 
 ---
 
-## Instalação
-
-
----
-
 ## Scripts SQL
 
 Os scripts para criação e manutenção do banco estão na pasta `/Docs/Scripts.sql`.
 
+Caso prefira na pasta `Docs/ASM1.bak` há um backup com alguns registros em tabela.
+
 > **Atenção**: Use SQL Server 2008 ou superior para garantir compatibilidade.
+
+---
+
+## Instalação
+
+- [Download do programa](https://github.com/DevsBitencourt/ASM/releases/download/1.0.2/ASM.zip)
+- Descompactar o programa
+- No arquivo `appsettings.json` alterar a connectionString para que a mesma acesse o banco de dados.
+- Executar o programa `XPedidos.exe` como administrador
+- A aplicação está configurada para subir na porta 7074, mas poderá ser alterada por meio do `appsettings.json`
+- Após finalizar o passo a passo a cima, por meio da rota que a aplicação gerou chamar o endpoint '/api-docs'.
+
+---
+
+
+
 
 ## Contato
 
