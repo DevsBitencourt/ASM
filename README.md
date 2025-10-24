@@ -24,16 +24,16 @@ Este projeto traz como foco o desafio final da Pós Gradução em Arquitetura de
 
 ## Estrutura do Projeto
 
-/Business.Contract       - Contratos de negócio
-/Business.Models         - Modelos de dados do domínio
-/Business.Shared         - Componentes compartilhados
-/Business                - Lógica de negócio principal
-/Repository.Contract     - Contratos de persistência
-/Repository.Models       - Modelos de dados para persistência
-/Repository              - Implementações de acesso a dados
-/XPedidos                - Módulo XPedidos
-/XPedidos.Infrastructure - Infraestrutura e integrações externas
-/Docs                    - Documentação (ex: scripts SQL)
+> /Business.Contract       - Contratos de negócio
+> /Business.Models         - Modelos de dados do domínio
+> /Business.Shared         - Componentes compartilhados
+> /Business                - Lógica de negócio principal
+> /Repository.Contract     - Contratos de persistência
+> /Repository.Models       - Modelos de dados para persistência
+> /Repository              - Implementações de acesso a dados
+> /XPedidos                - Módulo XPedidos
+> /XPedidos.Infrastructure - Infraestrutura e integrações externas
+> /Docs                    - Documentação (ex: scripts SQL)
 
 
 ---
@@ -44,6 +44,7 @@ Este projeto traz como foco o desafio final da Pós Gradução em Arquitetura de
 - SQL Server 2008+ (consulte a documentação dos scripts SQL)
 - Visual Studio 2022 ou superior
 
+> **Atenção**: Compilação do release gerado como auto suficiente.
 ---
 
 ## Scripts SQL
@@ -66,9 +67,6 @@ Caso prefira na pasta `Docs/ASM1.bak` há um backup com alguns registros em tabe
 - Após finalizar o passo a passo a cima, por meio da rota que a aplicação gerou chamar o endpoint '/api-docs'.
 
 ---
-
-
-
 
 ## Contato
 
