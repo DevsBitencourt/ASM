@@ -24,16 +24,16 @@ Este projeto traz como foco o desafio final da Pós Gradução em Arquitetura de
 
 ## Estrutura do Projeto
 
-> /Business.Contract       - Contratos de negócio
-> /Business.Models         - Modelos de dados do domínio
-> /Business.Shared         - Componentes compartilhados
-> /Business                - Lógica de negócio principal
-> /Repository.Contract     - Contratos de persistência
-> /Repository.Models       - Modelos de dados para persistência
-> /Repository              - Implementações de acesso a dados
-> /XPedidos                - Módulo XPedidos
-> /XPedidos.Infrastructure - Infraestrutura e integrações externas
-> /Docs                    - Documentação (ex: scripts SQL)
+- /Business.Contract       - Contratos de negócio
+- /Business.Models         - Modelos de dados do domínio
+- /Business.Shared         - Componentes compartilhados
+- /Business                - Lógica de negócio principal
+- /Repository.Contract     - Contratos de persistência
+- /Repository.Models       - Modelos de dados para persistência
+- /Repository              - Implementações de acesso a dados
+- /XPedidos                - Módulo XPedidos
+- /XPedidos.Infrastructure - Infraestrutura e integrações externas
+- /Docs                    - Documentação (ex: scripts SQL)
 
 
 ---
