@@ -19,22 +19,23 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-
-    app.MapScalarApiReference("/api-docs", options =>
-    {
-        options
-            .WithTitle("Pedidos API")
-            .WithTheme(ScalarTheme.Solarized)
-            .HideDocumentDownload()
-            .HideModels();
-    });
-
+    
 }
+
+app.MapOpenApi();
+
+app.MapScalarApiReference("/api-docs", options =>
+{
+    options
+        .WithTitle("Pedidos API")
+        .WithTheme(ScalarTheme.Solarized)
+        .HideDocumentDownload()
+        .HideModels();
+});
 
 app.UseMiddleware<DiscordMiddleware>();
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
