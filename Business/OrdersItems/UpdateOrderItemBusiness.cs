@@ -7,6 +7,9 @@ using Repository.Contract.OrdersItems;
 
 namespace Business.OrdersItems
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela atualização de item no pedido
+    /// </summary>
     public class UpdateOrderItemBusiness : IUpdateOrderItemBusiness
     {
         private readonly IUpdateOrderItemRepository repository;
@@ -16,6 +19,11 @@ namespace Business.OrdersItems
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Atualiza item do pedido com base no produto informado
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public async Task<ResponseBase<OrderItemDto>> UpdateAsync(OrderItemDto dto)
         {
             try

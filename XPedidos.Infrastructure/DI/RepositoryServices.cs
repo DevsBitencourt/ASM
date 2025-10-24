@@ -21,6 +21,10 @@ using Repository.Products.Update;
 
 namespace XPedidos.Infrastructure.DI
 {
+    /// <summary>
+    /// Classe dedica a registrar servicos para uso de injeção de dependencia
+    /// O serviços registrados aqui são serviços de persistencia ao banco de dados
+    /// </summary>
     public class RepositoryServices
     {
         public static void Configure(IServiceCollection services)

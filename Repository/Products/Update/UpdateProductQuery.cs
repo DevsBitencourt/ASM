@@ -1,5 +1,8 @@
 ﻿namespace Repository.Products.Update
 {
+    /// <summary>
+    /// Classe responsavel por armazenar os comando sql
+    /// </summary>
     internal class UpdateProductQuery
     {
         public static string Command()

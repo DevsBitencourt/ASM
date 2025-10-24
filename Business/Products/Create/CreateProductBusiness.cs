@@ -6,6 +6,9 @@ using Repository.Contract.Products;
 
 namespace Business.Products.Create
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela criacao de produtos
+    /// </summary>
     public class CreateProductBusiness : ICreateProductBusiness
     {
         private readonly ICreateProductRepository repository;
@@ -15,6 +18,11 @@ namespace Business.Products.Create
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Criacao de produtos no sistema
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public async Task<ResponseBase<CreateProductResponseDto>> CreateAsync(CreateProductsRequestDto dto)
         {
             var input = CreateProductMapper.MapRequest(dto);

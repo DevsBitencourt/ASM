@@ -5,6 +5,9 @@ using Repository.Contract.Clients;
 
 namespace Business.Clients.Update
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela atualização de clientes
+    /// </summary>
     public class UpdateClientBusiness : IUpdateClientBusiness
     {
 
@@ -15,6 +18,11 @@ namespace Business.Clients.Update
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Realiza a atualiza de clientes com base na entidade informada
+        /// </summary>
+        /// <param name="entity">Entidade de cliente</param>
+        /// <returns></returns>
         public async Task<ResponseBase<UpdateClientDto>> UpdateAsync(UpdateClientDto entity)
         {
             var mapperInput = Mapper.UpdateClientMapper.MapRequest(entity);

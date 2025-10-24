@@ -6,6 +6,9 @@ using Repository.Contract.Orders;
 
 namespace Business.Orders.Create
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela criação de pedidos
+    /// </summary>
     public class CreateOrderBusiness : ICreateOrderBusiness
     {
         private readonly ICreateOrderRepository repository;
@@ -15,6 +18,11 @@ namespace Business.Orders.Create
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Realiza a validação dos dados de cadastro de pedidos e realiza a chamada de persistencia ao banco
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<ResponseBase<CreateOrderRespondeDto>> CreateAsync(CreateOrderRequestDto model)
         {
             try

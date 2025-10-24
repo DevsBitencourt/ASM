@@ -23,6 +23,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace XPedidos.Infrastructure.DI
 {
+    /// <summary>
+    /// Classe dedica a registrar servicos para uso de injeção de dependencia
+    /// O serviços registrados aqui são serviços de regras de negocio
+    /// </summary>
     public class XPedidosServices
     {
 
@@ -34,6 +38,7 @@ namespace XPedidos.Infrastructure.DI
             OrdersItemsConfigure(services);
             ProductsConfigure(services);
 
+            /// Inclusão de serviço para uso do discord como middleware de repositório de erros
             services.AddSingleton<IDiscordServiceBusiness>(provider =>
             {
                 try

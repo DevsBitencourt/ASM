@@ -2,6 +2,10 @@
 
 namespace Business.Models
 {
+    /// <summary>
+    /// Retorno padrão
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public sealed class ResponseBase<TEntity>
     {
         /// <summary>

@@ -7,6 +7,9 @@ using static Dapper.SqlMapper;
 
 namespace Repository.Products.Delete
 {
+    /// <summary>
+    /// Classe responsavel por persistir a exclusao de produtos
+    /// </summary>
     public class DeleteProductRepository : ConnectionSql, IDeleteProductRepository
     {
         public DeleteProductRepository(IConfiguration configuration) : base(configuration)
@@ -17,7 +20,7 @@ namespace Repository.Products.Delete
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 var response = await connection.ExecuteAsync(DeleteProductQuery.Delete(), new { id });
                 return response > 0;
             }

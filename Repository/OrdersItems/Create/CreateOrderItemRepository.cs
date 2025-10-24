@@ -10,6 +10,9 @@ using Repository.SQLServer;
 
 namespace Repository.OrdersItems.Create
 {
+    /// <summary>
+    /// Classe responsavel por persistir a inclusao de itens pedido
+    /// </summary>
     public class CreateOrderItemRepository : ConnectionSql, ICreateOrderItemRepository
     {
         private readonly IReadOrderRepository repository;
@@ -35,7 +38,7 @@ namespace Repository.OrdersItems.Create
 
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 var response = await connection.ExecuteAsync(CreateOrderItemQuery.Command(), new { id = order.IdOrder, order.idProduct, sequence, amount = order.Amount });
 
                 await StockMovement(order.idProduct, order.Amount);

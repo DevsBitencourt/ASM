@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Repository.Contract.Orders;
 using Repository.Models.Orders.Read;
@@ -7,6 +6,10 @@ using Repository.SQLServer;
 
 namespace Repository.Orders.Read
 {
+
+    /// <summary>
+    /// Classe responsavel por pesquisar pedidos
+    /// </summary>
     public class ReadOrderRepository : ConnectionSql, IReadOrderRepository
     {
         public ReadOrderRepository(IConfiguration configuration) : base(configuration)
@@ -19,7 +22,7 @@ namespace Repository.Orders.Read
             {
                 var orderDictionary = new Dictionary<int, ReadOrderModel>();
 
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
 
                 var response = await connection.QueryAsync<ReadOrderModel, ReadOrderItemModel, ReadOrderModel>(ReadOrderQuery.FindAll(),
                     (order, orderItem) =>
@@ -55,7 +58,7 @@ namespace Repository.Orders.Read
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryFirstAsync<ReadOrderModel>(ReadOrderQuery.FindById(), new { id });
             }
             catch (Exception)
@@ -68,7 +71,7 @@ namespace Repository.Orders.Read
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryAsync<ReadOrderModel>(ReadOrderQuery.FindByName(), new { name });
             }
             catch (Exception)
@@ -79,16 +82,7 @@ namespace Repository.Orders.Read
 
         public async Task<int?> TotalRecordsAsync()
         {
-            try
-            {
-                await using var connection = new SqlConnection(ConnectioString);
-                return await connection.ExecuteScalarAsync<int>(ReadOrderQuery.TotalRecords());
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return await this.TotalRecords(ReadOrderQuery.TotalRecords());
         }
-
     }
 }

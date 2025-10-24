@@ -1,5 +1,8 @@
 ﻿namespace Repository.Orders.Read
 {
+    /// <summary>
+    /// Classe responsavel por armazenar os comando sql
+    /// </summary>
     internal class ReadOrderQuery
     {
         #region Methods internals

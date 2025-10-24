@@ -4,6 +4,9 @@ using System.Text;
 
 namespace XPedidos.Infrastructure.Middleware
 {
+    /// <summary>
+    /// Middleware Discord
+    /// </summary>
     public class DiscordMiddleware
     {
         private readonly RequestDelegate _next;
@@ -15,18 +18,30 @@ namespace XPedidos.Infrastructure.Middleware
             _logService = logService;
         }
 
+        /// <summary>
+        /// Middleware discord
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
         public async Task InvokeAsync(HttpContext context)
         {
-            // Exemplo: logando entrada e saída
-            await _logService.LogAsync($"[Request] {context.Request.Method} {context.Request.Path}");
-            await _next(context);
+            try
+            {
+                // Exemplo: logando entrada e saída
+                await _logService.LogAsync($"[Request] {context.Request.Method} {context.Request.Path}");
+                await _next(context);
 
-            var sb = new StringBuilder();
-            sb
-                .AppendLine($"[StatusCode] {context.Response.StatusCode}")
-                .AppendLine($"[Request finished] {context.Request.Method} {context.Request.Path}");
+                var sb = new StringBuilder();
+                sb
+                    .AppendLine($"[StatusCode] {context.Response.StatusCode}")
+                    .AppendLine($"[Request finished] {context.Request.Method} {context.Request.Path}");
 
-            await _logService.LogAsync(sb.ToString());
+                await _logService.LogAsync(sb.ToString());
+            }
+            catch (Exception ex)
+            {
+                await _logService.LogAsync($"[Errors] {ex.Message}");
+            }
         }
     }
 }

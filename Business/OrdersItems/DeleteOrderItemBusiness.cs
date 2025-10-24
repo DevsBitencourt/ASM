@@ -4,6 +4,9 @@ using Repository.Contract.OrdersItems;
 
 namespace Business.OrdersItems
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela exclusão de item do pedido
+    /// </summary>
     public class DeleteOrderItemBusiness : IDeleteOrderItemBusiness
     {
         private readonly IDeleteOrderItemRepository repository;
@@ -13,6 +16,12 @@ namespace Business.OrdersItems
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Exclui item de pedido
+        /// </summary>
+        /// <param name="id">Identificador do pedido</param>
+        /// <param name="idProduct">Identificador do produto</param>
+        /// <returns></returns>
         public async Task<ResponseBase<bool>> DeleteAsync(int id, int idProduct)
         {
             var response = await repository.DeleteAsync(id, idProduct);

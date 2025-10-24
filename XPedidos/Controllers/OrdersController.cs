@@ -27,6 +27,10 @@ namespace XPedidos.Controllers
 
         #region Methods Get
 
+        /// <summary>
+        /// Busca os pedidos cadastrados no sistema
+        /// </summary>
+        /// <returns>Retorna lista de pedidos cadastradas no sistema</returns>
         [HttpGet]
         [ProducesResponseType(typeof(ResponseBase<IEnumerable<ReadOrderResposeDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindAllAsync()
@@ -35,6 +39,11 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Busca pedido com base no seu identificador unico
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Pedido do identificador</returns>
         [HttpGet("id")]
         [ProducesResponseType(typeof(ResponseBase<ReadOrderResposeDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindByIdAsync(int id)
@@ -43,6 +52,11 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Busca pedidos no sistema cujo o nome do cliente contens o nome informado
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Lista de clientes contens nomes</returns>
         [HttpGet("name")]
         [ProducesResponseType(typeof(ResponseBase<IEnumerable<ReadOrderResposeDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindByNameAsync(string name)
@@ -51,6 +65,10 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Busca quantidade de registros de pedidos
+        /// </summary>
+        /// <returns>Retorna a quantidade de pedidos no sistema</returns>
         [HttpGet("totalRecords")]
         [ProducesResponseType(typeof(ResponseBase<int>), StatusCodes.Status200OK)]
         public async Task<IActionResult> TotalRecordsAsync()
@@ -61,6 +79,11 @@ namespace XPedidos.Controllers
 
         #endregion
 
+        /// <summary>
+        /// Criação de novos pedidos
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(ResponseBase<CreateOrderRespondeDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -76,6 +99,11 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualização de pedido
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -91,6 +119,11 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleção de pedidos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("id")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

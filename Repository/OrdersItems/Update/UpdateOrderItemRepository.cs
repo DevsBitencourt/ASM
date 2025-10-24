@@ -8,6 +8,9 @@ using Repository.SQLServer;
 
 namespace Repository.OrdersItems.Update
 {
+    /// <summary>
+    /// Classe responsavel por persistir a atualizar itens pedido
+    /// </summary>
     public class UpdateOrderItemRepository : ConnectionSql, IUpdateOrderItemRepository
     {
         public UpdateOrderItemRepository(IConfiguration configuration) : base(configuration)
@@ -18,7 +21,7 @@ namespace Repository.OrdersItems.Update
 
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 var response = await connection.ExecuteAsync(UpdateOrderItemQuery.Command(), new { id = order.IdOrder, order.idProduct, amount = order.Amount });
 
                 return order;

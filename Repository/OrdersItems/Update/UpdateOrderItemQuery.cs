@@ -1,5 +1,8 @@
 ﻿namespace Repository.OrdersItems.Update
 {
+    /// <summary>
+    /// Classe responsavel por armazenar os comando sql
+    /// </summary>
     internal class UpdateOrderItemQuery
     {
         public static string Command()

@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace XPedidos.Controllers
 {
+
+    /// <summary>
+    /// Controlador responsavel pelas rotas de cliente
+    /// </summary>
     [ApiController]
     [Route("/api/[controller]")]
     public class ClientsController : ControllerBase
@@ -27,6 +31,10 @@ namespace XPedidos.Controllers
 
         #region Methods Get
 
+        /// <summary>
+        /// Retorna a lista de todos os clientes cadastrados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(ResponseBase<IEnumerable<ReadClientDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindAllAsync()
@@ -35,6 +43,11 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Captura cliente com base no seu identiificador único
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("id")]
         [ProducesResponseType(typeof(ResponseBase<ReadClientDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindByIdAsync(int id)
@@ -43,6 +56,11 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Retorna clientes cujo o nome informado contém no nome de cliente
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpGet("name")]
         [ProducesResponseType(typeof(ResponseBase<IEnumerable<ReadClientDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindByNameAsync(string name)
@@ -51,6 +69,10 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Retorna o totalizador de clientes cadastrados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("totalRecords")]
         [ProducesResponseType(typeof(ResponseBase<int>), StatusCodes.Status200OK)]
         public async Task<IActionResult> TotalRecordsAsync()
@@ -61,6 +83,11 @@ namespace XPedidos.Controllers
 
         #endregion
 
+        /// <summary>
+        /// Inserção de novos clientes
+        /// </summary>
+        /// <param name="model">Informações de clientes</param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(ResponseBase<CreateClientResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -76,6 +103,11 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza dados de cliente
+        /// </summary>
+        /// <param name="model">Informações de clientes</param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -91,6 +123,11 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Excluir cliente
+        /// </summary>
+        /// <param name="id">Identificador do cliente</param>
+        /// <returns></returns>
         [HttpDelete("id")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

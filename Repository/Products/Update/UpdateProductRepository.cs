@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Repository.Contract.Products;
 using Repository.Models.Products;
 using Repository.SQLServer;
@@ -7,6 +6,9 @@ using static Dapper.SqlMapper;
 
 namespace Repository.Products.Update
 {
+    /// <summary>
+    /// Classe responsavel por persistir a atualizacao de produtos
+    /// </summary>
     public class UpdateProductRepository : ConnectionSql, IUpdateProductRepository
     {
         public UpdateProductRepository(IConfiguration configuration) : base(configuration)
@@ -17,7 +19,7 @@ namespace Repository.Products.Update
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 var response = await connection.ExecuteAsync(UpdateProductQuery.Command(), new { id = model.Id, name = model.Name, amount = model.Amount, price = model.Price });
                 return model;
             }
@@ -31,7 +33,7 @@ namespace Repository.Products.Update
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 var response = await connection.ExecuteAsync(UpdateProductQuery.StockMovementCommand(), new { id = model.Id, amount = model.Amount });
                 return model;
             }

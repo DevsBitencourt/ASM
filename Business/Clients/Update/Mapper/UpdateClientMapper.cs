@@ -4,6 +4,11 @@ namespace Business.Clients.Update.Mapper
 {
     internal class UpdateClientMapper
     {
+        /// <summary>
+        /// Realiza o mapeamento do dto de entrada para a model de persistencia
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static Repository.Models.Clients.ClientModel MapRequest(UpdateClientDto client)
         {
             return new Repository.Models.Clients.ClientModel()
@@ -16,6 +21,11 @@ namespace Business.Clients.Update.Mapper
             };
         }
 
+        /// <summary>
+        /// Realiza o mapeamento da model de persistencia para o dto de saida
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static UpdateClientDto MapResponse(Repository.Models.Clients.ClientModel client)
         {
             return new UpdateClientDto()

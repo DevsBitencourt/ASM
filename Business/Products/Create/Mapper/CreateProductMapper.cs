@@ -3,8 +3,16 @@ using Repository.Models.Products;
 
 namespace Business.Products.Create.Mapper
 {
+    /// <summary>
+    /// Classe responsavel por realizar o mapeamento dos dados de prdutos
+    /// </summary>
     internal class CreateProductMapper
     {
+        /// <summary>
+        /// Mapeamento da dto de entrada para a model de persistencia
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public static ProductModel MapRequest(CreateProductsRequestDto dto)
         {
             return new()
@@ -15,6 +23,11 @@ namespace Business.Products.Create.Mapper
             };
         }
 
+        /// <summary>
+        /// Mapeamento da model de persistencia para a dto de saída
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public static CreateProductResponseDto MapResponse(ProductModel model)
         {
             return new()

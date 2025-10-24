@@ -7,6 +7,9 @@ using Repository.Contract.OrdersItems;
 
 namespace Business.OrdersItems
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela criação de itens em pedido
+    /// </summary>
     public class CreateOrderItemBusiness : ICreateOrderItemBusiness
     {
         private readonly ICreateOrderItemRepository repository;
@@ -16,6 +19,11 @@ namespace Business.OrdersItems
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Adiciona item ao pedido do cliente
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public async Task<ResponseBase<OrderItemDto>> CreateAsync(OrderItemDto dto)
         {
             try

@@ -5,6 +5,9 @@ using Repository.Contract.Products;
 
 namespace Business.Products.Delete
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela exclusao de produto
+    /// </summary>
     public class DeleteProductBusiness : IDeleteProductBusiness
     {
         private readonly IDeleteProductRepository repository;
@@ -14,6 +17,11 @@ namespace Business.Products.Delete
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Excluir produtos do sistema
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ResponseBase<bool>> DeleteAsync(int id)
         {
             try

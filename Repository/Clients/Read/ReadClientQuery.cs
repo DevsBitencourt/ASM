@@ -1,5 +1,8 @@
 ﻿namespace Repository.Clients
 {
+    /// <summary>
+    /// Classe responsavel por armazenar os comando sql
+    /// </summary>
     internal static class ReadClientQuery
     {
         #region Methods internals

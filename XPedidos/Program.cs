@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
@@ -22,10 +21,17 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 
-    app.MapScalarApiReference("/api-docs");
+    app.MapScalarApiReference("/api-docs", options =>
+    {
+        options
+            .WithTitle("Pedidos API")
+            .WithTheme(ScalarTheme.Solarized)
+            .HideDocumentDownload()
+            .HideModels();
+    });
+
 }
 
-//app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<DiscordMiddleware>();
 
 app.UseHttpsRedirection();

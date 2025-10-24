@@ -1,5 +1,8 @@
 ﻿namespace Repository.Clients.Create
 {
+    /// <summary>
+    /// Classe responsavel por armazenar os comando sql
+    /// </summary>
     internal static class CreateClientQuery
     {
         internal static string Create()

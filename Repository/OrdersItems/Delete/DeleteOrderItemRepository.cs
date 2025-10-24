@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Repository.Contract.Orders;
 using Repository.Contract.OrdersItems;
@@ -8,6 +7,9 @@ using Repository.SQLServer;
 
 namespace Repository.OrdersItems.Delete
 {
+    /// <summary>
+    /// Classe responsavel por persistir a excluir itens pedido
+    /// </summary>
     public class DeleteOrderItemRepository : ConnectionSql, IDeleteOrderItemRepository
     {
 
@@ -33,7 +35,7 @@ namespace Repository.OrdersItems.Delete
                         amount = Convert.ToInt32(orders.Items.Select(i => i.Amount).FirstOrDefault(0));
                 }
 
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 var response = await connection.ExecuteAsync(DeleteOrderItemQuery.Command(), new { id, idProduct });
 
                 await StockMovement(idProduct, amount);

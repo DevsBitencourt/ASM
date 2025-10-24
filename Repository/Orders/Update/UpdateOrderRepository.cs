@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Repository.Contract.Orders;
 using Repository.Models.Orders;
@@ -7,6 +6,9 @@ using Repository.SQLServer;
 
 namespace Repository.Orders.Update
 {
+    /// <summary>
+    /// Classe responsavel por persistir a atualizacao de pedidos
+    /// </summary>
     public class UpdateOrderRepository : ConnectionSql, IUpdateOrderRepository
     {
         public UpdateOrderRepository(IConfiguration configuration) : base(configuration)
@@ -17,7 +19,7 @@ namespace Repository.Orders.Update
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 var response = await connection.ExecuteAsync(UpdateOrderQuery.Command(), new { id = order.IdOrder, status = (int)order.Status });
                 return order;
             }

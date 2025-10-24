@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Repository.Contract.Products;
 using Repository.Models.Products;
@@ -8,6 +7,9 @@ using static Dapper.SqlMapper;
 
 namespace Repository.Products.Read
 {
+    /// <summary>
+    /// Classe responsavel por persistir pesquisa de produtos
+    /// </summary>
     public class ReadProductRepository : ConnectionSql, IReadProductRepository
     {
         public ReadProductRepository(IConfiguration configuration) : base(configuration)
@@ -18,7 +20,7 @@ namespace Repository.Products.Read
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryAsync<ProductModel>(ReadProductQuery.FindAll());
             }
             catch (Exception)
@@ -32,7 +34,7 @@ namespace Repository.Products.Read
             try
             {
 
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryFirstAsync<ProductModel>(ReadProductQuery.FindById(), new { id });
             }
             catch (Exception)
@@ -46,7 +48,7 @@ namespace Repository.Products.Read
             try
             {
 
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryAsync<ProductModel>(ReadProductQuery.FindByName(), new { name });
             }
             catch (Exception)
@@ -57,15 +59,7 @@ namespace Repository.Products.Read
 
         public async Task<int?> TotalRecordsAsync()
         {
-            try
-            {
-                await using var connection = new SqlConnection(ConnectioString);
-                return await connection.ExecuteScalarAsync<int>(ReadProductQuery.TotalRecords());
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return await this.TotalRecords(ReadProductQuery.TotalRecords());
         }
 
     }

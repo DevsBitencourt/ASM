@@ -1,5 +1,8 @@
 ﻿namespace Repository.Products.Read
 {
+    /// <summary>
+    /// Classe responsavel por armazenar os comando sql
+    /// </summary>
     internal class ReadProductQuery
     {
         public static string FindAll()

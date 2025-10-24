@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Repository.Contract.Clients;
 using Repository.Models.Clients;
@@ -7,6 +6,10 @@ using Repository.SQLServer;
 
 namespace Repository.Clients.Read
 {
+
+    /// <summary>
+    /// Classe responsavel por consultar clientes no banco de dados
+    /// </summary>
     public class ReadClientRepository : ConnectionSql, IReadClientsRepository
     {
         public ReadClientRepository(IConfiguration configuration) : base(configuration)
@@ -17,7 +20,7 @@ namespace Repository.Clients.Read
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryAsync<ClientModel>(ReadClientQuery.FindAll());
             }
             catch (Exception)
@@ -30,7 +33,7 @@ namespace Repository.Clients.Read
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryFirstAsync<ClientModel>(ReadClientQuery.FindById(), new { ID_CLIENTS = id });
             }
             catch (Exception)
@@ -43,7 +46,7 @@ namespace Repository.Clients.Read
         {
             try
             {
-                await using var connection = new SqlConnection(ConnectioString);
+                await using var connection = CreateConnection();
                 return await connection.QueryAsync<ClientModel>(ReadClientQuery.FindByName(), new { NAME = name });
             }
             catch (Exception)
@@ -54,16 +57,7 @@ namespace Repository.Clients.Read
 
         public async Task<int?> TotalRecordsAsync()
         {
-            try
-            {
-                await using var connection = new SqlConnection(ConnectioString);
-                return await connection.ExecuteScalarAsync<int>(ReadClientQuery.TotalRecords());
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return await this.TotalRecords(ReadClientQuery.TotalRecords());
         }
-
     }
 }

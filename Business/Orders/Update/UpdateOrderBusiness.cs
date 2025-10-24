@@ -6,6 +6,9 @@ using Repository.Contract.Orders;
 
 namespace Business.Orders.Update
 {
+    /// <summary>
+    /// Camada de negócios responsavel pela atualização de pedidos
+    /// </summary>
     public class UpdateOrderBusiness : IUpdateOrderBusiness
     {
         private readonly IUpdateOrderRepository repository;
@@ -15,6 +18,11 @@ namespace Business.Orders.Update
             this.repository = repository;
         }
 
+        /// <summary>
+        /// Atualizar pedidos 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<ResponseBase<UpdateOrderResponseDto>> UpdateAsync(UpdateOrderRequestDto model)
         {
             var input = UpdateOrderMapper.MapRequest(model);

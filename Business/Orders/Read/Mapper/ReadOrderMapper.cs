@@ -3,13 +3,27 @@ using Repository.Models.Orders.Read;
 
 namespace Business.Orders.Read.Mapper
 {
+
+    /// <summary>
+    /// Classe responsavel por realizar o mapeamento dos dados de pedidos
+    /// </summary>
     internal class ReadOrderMapper
     {
+        /// <summary>
+        /// Mapeamento da model de persistencia para o dto de saida
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static IEnumerable<ReadOrderResposeDto> MapResponse(IEnumerable<ReadOrderModel> model)
         {
             return model.Select(x => MapResponse(x));
         }
 
+        /// <summary>
+        /// Mapeamento da model de persistencia para o dto de saida
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static ReadOrderResposeDto MapResponse(ReadOrderModel model)
         {
             return new ReadOrderResposeDto()
@@ -24,6 +38,11 @@ namespace Business.Orders.Read.Mapper
             };
         }
 
+        /// <summary>
+        /// Mapeamento da model de persistencia para o dto de saida
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
         public static ReadOrderItemResponseDto MapItemResponse(ReadOrderItemModel dto)
         {
             return new ReadOrderItemResponseDto()

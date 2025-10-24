@@ -1,5 +1,8 @@
 ﻿namespace Repository.Orders.Create
 {
+    /// <summary>
+    /// Classe responsavel por armazenar os comando sql
+    /// </summary>
     internal class CreateOrderQuery
     {
         public static string Command()

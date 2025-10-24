@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace XPedidos.Controllers
 {
+
+    /// <summary>
+    /// Controladora de itens de pedido
+    /// </summary>
     [ApiController]
     [Route("/api/[controller]")]
     public class OrdersItemsController : ControllerBase
@@ -21,6 +25,11 @@ namespace XPedidos.Controllers
             this.deleteBusiness = deleteBusiness;
         }
 
+        /// <summary>
+        /// Adição de itens de pedido
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(ResponseBase<CreateOrderRespondeDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -36,6 +45,11 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualização de itens de pedido
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -51,6 +65,12 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleção de itens de pedido
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="idProduct"></param>
+        /// <returns></returns>
         [HttpDelete("id/idProduct")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

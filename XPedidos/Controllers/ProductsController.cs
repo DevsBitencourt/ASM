@@ -26,6 +26,10 @@ namespace XPedidos.Controllers
 
         #region Methods Get
 
+        /// <summary>
+        /// Busca lista de produtos
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(ResponseBase<IEnumerable<ReadProductResponseDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindAllAsync()
@@ -34,6 +38,11 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Busca produto com base no seu identificador
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("id")]
         [ProducesResponseType(typeof(ResponseBase<ReadProductResponseDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindByIdAsync(int id)
@@ -42,6 +51,11 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Busca produtos que contenham o nome informado
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         [HttpGet("name")]
         [ProducesResponseType(typeof(ResponseBase<IEnumerable<ReadProductResponseDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetFindByNameAsync(string name)
@@ -50,6 +64,10 @@ namespace XPedidos.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Captura quantidade de produtos cadastrados no sistema
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("totalRecords")]
         [ProducesResponseType(typeof(ResponseBase<int>), StatusCodes.Status200OK)]
         public async Task<IActionResult> TotalRecordsAsync()
@@ -60,6 +78,11 @@ namespace XPedidos.Controllers
 
         #endregion
 
+        /// <summary>
+        /// Cria um novo produto
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(ResponseBase<CreateProductResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -75,6 +98,11 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza produto existente
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -90,6 +118,11 @@ namespace XPedidos.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete item com base no seu identificador
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("id")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
