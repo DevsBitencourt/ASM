@@ -1,0 +1,316 @@
+¦   README.md
+¦   XPedidosSolution.sln
+¦   
+2. Business - Camada de negocios
+¦	+---Business - Lógica de negócio principal
+¦	¦   ¦               
+¦	¦   +---Clients
+¦	¦   ¦   +---Create - Regra de negócio para criação de usuários 
+¦	¦   ¦   ¦   ¦   CreateClientBusiness.cs
+¦	¦   ¦   ¦   ¦   
+¦	¦   ¦   ¦   +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦   ¦   ¦           CreateClientMapper.cs
+¦	¦   ¦   ¦           
+¦	¦   ¦   +---Delete
+¦	¦   ¦   ¦       DeleteClientBusiness.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦   ¦   ¦   ReadClientBusiness.cs
+¦	¦   ¦   ¦   ¦   
+¦	¦   ¦   ¦   +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦   ¦   ¦           ReadClientMapper.cs
+¦	¦   ¦   ¦           
+¦	¦   ¦   +---Update
+¦	¦   ¦       ¦   UpdateClientBusiness.cs
+¦	¦   ¦       ¦   
+¦	¦   ¦       +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦   ¦               UpdateClientMapper.cs
+¦	¦   ¦               
+¦	¦   +---Discord
+¦	¦   ¦       DiscordServiceBusiness.cs
+¦	¦   ¦                   
+¦	¦   +---Orders
+¦	¦   ¦   +---Create
+¦	¦   ¦   ¦   ¦   CreateOrderBusiness.cs
+¦	¦   ¦   ¦   ¦   
+¦	¦   ¦   ¦   +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦   ¦   ¦           CreateOrderMapper.cs
+¦	¦   ¦   ¦           
+¦	¦   ¦   +---Delete
+¦	¦   ¦   ¦       DeleteOrderBusiness.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦   ¦   ¦   ReadOrderBusiness.cs
+¦	¦   ¦   ¦   ¦   
+¦	¦   ¦   ¦   +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦   ¦   ¦           ReadOrderMapper.cs
+¦	¦   ¦   ¦           
+¦	¦   ¦   +---Update
+¦	¦   ¦       ¦   UpdateOrderBusiness.cs
+¦	¦   ¦       ¦   
+¦	¦   ¦       +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦   ¦               UpdateOrderMapper.cs
+¦	¦   ¦               
+¦	¦   +---OrdersItems
+¦	¦   ¦   ¦   CreateOrderItemBusiness.cs
+¦	¦   ¦   ¦   DeleteOrderItemBusiness.cs
+¦	¦   ¦   ¦   UpdateOrderItemBusiness.cs
+¦	¦   ¦   ¦   
+¦	¦   ¦   +---Mapper
+¦	¦   ¦           OrderItemsMapper.cs
+¦	¦   ¦           
+¦	¦   +---Products
+¦	¦       +---Create
+¦	¦       ¦   ¦   CreateProductBusiness.cs
+¦	¦       ¦   ¦   
+¦	¦       ¦   +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦       ¦           CreateProductMapper.cs
+¦	¦       ¦           
+¦	¦       +---Delete
+¦	¦       ¦       DeleteProductBusiness.cs
+¦	¦       ¦       
+¦	¦       +---Read
+¦	¦       ¦   ¦   ReadProductBusiness.cs
+¦	¦       ¦   ¦   
+¦	¦       ¦   +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦       ¦           ReadProductsMapper.cs
+¦	¦       ¦           
+¦	¦       +---Update 
+¦	¦           ¦   UpdateProductBusiness.cs
+¦	¦           ¦   
+¦	¦           +---Mapper - Mapeamento de dados de entrada/saida
+¦	¦                   UpdateProductMapper.cs
+¦	¦                   
+¦	+---Business.Contract - Contratos de negócio
+¦	¦   ¦   IBusinessContract.cs
+¦	¦   ¦               
+¦	¦   +---Clients
+¦	¦   ¦       ICreateClientBusiness.cs
+¦	¦   ¦       IDeleteClientBusiness.cs
+¦	¦   ¦       IReadClientBusiness.cs
+¦	¦   ¦       IUpdateClientBusiness.cs
+¦	¦   ¦       
+¦	¦   +---Discord
+¦	¦   ¦       IDiscordServiceBusiness.cs
+¦	¦   ¦                   
+¦	¦   +---Orders
+¦	¦   ¦       ICreateOrderBusiness.cs
+¦	¦   ¦       IDeleteOrderBusiness.cs
+¦	¦   ¦       IReadOrderBusiness.cs
+¦	¦   ¦       IUpdateOrderBusiness.cs
+¦	¦   ¦       
+¦	¦   +---OrdersItems
+¦	¦   ¦       ICreateOrderItemBusiness.cs
+¦	¦   ¦       IDeleteOrderItemBusiness.cs
+¦	¦   ¦       IUpdateOrderItemBusiness.cs
+¦	¦   ¦       
+¦	¦   +---Products
+¦	¦           ICreateProductBusiness.cs
+¦	¦           IDeleteProductBusiness.cs
+¦	¦           IReadProductBusiness.cs
+¦	¦           IUpdateProductBusiness.cs
+¦	¦           
+¦	+---Business.Models - Modelos de dados do domínio
+¦	¦   ¦   ResponseBase.cs
+¦	¦   ¦   
+¦	¦   +---Clients
+¦	¦   ¦   ¦   ClientDto.cs
+¦	¦   ¦   ¦   
+¦	¦   ¦   +---Create
+¦	¦   ¦   ¦       CreateClientDto.cs
+¦	¦   ¦   ¦       CreateClientResponseDto.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦   ¦       ReadClientDto.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Update
+¦	¦   ¦           UpdateClientDto.cs
+¦	¦   ¦                   
+¦	¦   +---Orders
+¦	¦   ¦   +---Create
+¦	¦   ¦   ¦       CreateOrderRequestDto.cs
+¦	¦   ¦   ¦       CreateOrderRespondeDto.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦   ¦       ReadOrderItemResponseDto.cs
+¦	¦   ¦   ¦       ReadOrderResposeDto.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Update
+¦	¦   ¦           UpdateOrderRequestDto.cs
+¦	¦   ¦           UpdateOrderResponseDto.cs
+¦	¦   ¦           
+¦	¦   +---OrdersItems
+¦	¦   ¦       OrderItemDto.cs
+¦	¦   ¦       
+¦	¦   +---Products
+¦	¦       +---Create
+¦	¦       ¦       CreateProductResponseDto.cs
+¦	¦       ¦       CreateProductsRequestDto.cs
+¦	¦       ¦       
+¦	¦       +---Read
+¦	¦       ¦       ReadProductResponseDto.cs
+¦	¦       ¦       
+¦	¦       +---Update
+¦	¦               UpdateProductDto.cs
+¦	¦               
+¦	+---Business.Shared - Componentes compartilhados
+¦	¦   ¦   
+¦	¦   +---Exceptions
+¦	¦   ¦       ForeignKeyException.cs
+¦	¦   ¦ 
+¦	+---Docs - Documentação
+¦	¦   ¦   ASM1.bak
+¦	¦   ¦   Diagram_Database.png
+¦	¦   ¦   Scripts.sql
+¦	¦   ¦   
+¦	¦   +---Diagramas C4
+¦	¦           C4_DiagramaClasse.drawio
+¦	¦           C4_DiagramaClasse.png
+¦	¦           C4_DiagramaComponente.png
+¦	¦           C4_DiagramaContainer.png
+¦	¦           C4_DiagramaContextoSystema.png
+¦	¦           Vitor Miranda Bitencourt_Diagramas_C4.zip
+¦ 
+3. Repository   - Camada de persistencia     
+¦	+---Repository - Implementações de acesso a dados
+¦   ¦   
+¦	¦   +---Clients
+¦	¦   ¦   +---Create
+¦	¦   ¦   ¦       CreateClientQuery.cs
+¦	¦   ¦   ¦       CreateClientRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Delete
+¦	¦   ¦   ¦       DeleteClientQuery.cs
+¦	¦   ¦   ¦       DeleteClientRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦   ¦       ReadClientQuery.cs
+¦	¦   ¦   ¦       ReadClientRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Update
+¦	¦   ¦           UpdateClientQuery.cs
+¦	¦   ¦           UpdateClientRepository.cs
+¦	¦   ¦                   
+¦	¦   +---Orders
+¦	¦   ¦   +---Create
+¦	¦   ¦   ¦       CreateOrderQuery.cs
+¦	¦   ¦   ¦       CreateOrderRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Delete
+¦	¦   ¦   ¦       DeleteOrderQuery.cs
+¦	¦   ¦   ¦       DeleteOrderRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦   ¦       ReadOrderQuery.cs
+¦	¦   ¦   ¦       ReadOrderRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Update
+¦	¦   ¦           UpdateOrderQuery.cs
+¦	¦   ¦           UpdateOrderRepository.cs
+¦	¦   ¦           
+¦	¦   +---OrdersItems
+¦	¦   ¦   +---Create
+¦	¦   ¦   ¦       CreateOrderItemQuery.cs
+¦	¦   ¦   ¦       CreateOrderItemRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Delete
+¦	¦   ¦   ¦       DeleteOrderItemQuery.cs
+¦	¦   ¦   ¦       DeleteOrderItemRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Update
+¦	¦   ¦           UpdateOrderItemQuery.cs
+¦	¦   ¦           UpdateOrderItemRepository.cs
+¦	¦   ¦           
+¦	¦   +---Products
+¦	¦   ¦   +---Create
+¦	¦   ¦   ¦       CreateProductQuery.cs
+¦	¦   ¦   ¦       CreateProductRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Delete
+¦	¦   ¦   ¦       DeleteProductQuery.cs
+¦	¦   ¦   ¦       DeleteProductRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦   ¦       ReadProductQuery.cs
+¦	¦   ¦   ¦       ReadProductRepository.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Update
+¦	¦   ¦           UpdateProductQuery.cs
+¦	¦   ¦           UpdateProductRepository.cs
+¦	¦   ¦           
+¦	¦   +---SQLServer
+¦	¦           ConnectionSql.cs
+¦   ¦        
+¦	+---Repository.Contract - Contratos de persistência
+¦	¦   ¦   IBasicConsultation.cs
+¦	¦   ¦   
+¦	¦   +---Clients
+¦	¦   ¦       ICreateClientRepository.cs
+¦	¦   ¦       IDeleteClientRepository.cs
+¦	¦   ¦       IReadClientsRepository.cs
+¦	¦   ¦       IUpdateClientRepository.cs
+¦	¦   ¦                   
+¦	¦   +---Orders
+¦	¦   ¦       ICreateOrderRepository.cs
+¦	¦   ¦       IDeleteOrderRepository.cs
+¦	¦   ¦       IReadOrderRepository.cs
+¦	¦   ¦       IUpdateOrderRepository.cs
+¦	¦   ¦       
+¦	¦   +---OrdersItems
+¦	¦   ¦       ICreateOrderItemRepository.cs
+¦	¦   ¦       IDeleteOrderItemRepository.cs
+¦	¦   ¦       IUpdateOrderItemRepository.cs
+¦	¦   ¦       
+¦	¦   +---Products
+¦	¦           ICreateProductRepository.cs
+¦	¦           IDeleteProductRepository.cs
+¦	¦           IReadProductRepository.cs
+¦	¦           IUpdateProductRepository.cs
+¦	¦           
+¦	+---Repository.Models - Modelos de dados para persistência
+¦	¦   ¦   
+¦	¦   +---Clients
+¦	¦   ¦       ClientModel.cs
+¦	¦   ¦       
+¦	¦   +---Orders
+¦	¦   ¦   ¦   OrderModel.cs
+¦	¦   ¦   ¦   
+¦	¦   ¦   +---Enum
+¦	¦   ¦   ¦       EOrder.cs
+¦	¦   ¦   ¦       
+¦	¦   ¦   +---Read
+¦	¦   ¦           ReadOrderItemModel.cs
+¦	¦   ¦           ReadOrderModel.cs
+¦	¦   ¦           
+¦	¦   +---OrdersItems
+¦	¦   ¦       OrderItemModel.cs
+¦	¦   ¦       
+¦	¦   +---Products
+¦	¦           ProductModel.cs
+¦	¦       
+¦   ¦
++---1. Apresentação - Camada de apresentação    
+¦   +---XPedidos - Módulo XPedidos
+¦   ¦   	appsettings.Development.json
+¦   ¦   	appsettings.json
+¦   ¦   	ca1f5ef9-ff52-467a-97ac-cc8ce751ee27.ico
+¦   ¦   	Program.cs
+¦   ¦   	XPedidos.csproj
+¦   ¦   	XPedidos.csproj.user
+¦   ¦                   
+¦   ¦	+---Controllers
+¦   ¦   	    ClientsController.cs
+¦   ¦       	OrdersController.cs
+¦   ¦       	OrdersItemsController.cs
+¦   ¦       	ProductsController.cs
+¦   ¦                     
+¦   +---XPedidos.Infrastructure - Infraestrutura e integrações externas
+¦   ¦   XPedidos.Infrastructure.csproj
+¦   ¦   
+¦   ¦	+---DI
+¦   ¦       RepositoryServices.cs
+¦   ¦       XPedidosServices.cs
+¦   ¦       
+¦   ¦	+---Middleware
+¦   ¦       DiscordMiddleware.cs
+¦   ¦       ExceptionMiddleware.cs
